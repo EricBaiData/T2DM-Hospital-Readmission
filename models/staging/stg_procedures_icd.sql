@@ -12,7 +12,11 @@ WITH unique_combo AS (
 )
 
 SELECT 
-    procedures.*
+    procedures.hadm_id,
+    procedures.subject_id,
+    procedures.seq_num,
+    procedures.icd_code,
+    procedures.icd_version
 FROM 
     unique_combo
 LEFT JOIN 

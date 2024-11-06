@@ -1,4 +1,11 @@
 SELECT 
-    *
+    hadm_id,
+    subject_id,
+    race,
+    insurance,
+    admission_type,
+    admittime,
+    dischtime,
+    discharge_location
 FROM 
     mimic-iv-440804.hosp_ehr.admissions
