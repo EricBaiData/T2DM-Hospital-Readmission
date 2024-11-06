@@ -36,8 +36,8 @@ models:
           - not_null
 
 
-  # model: cln_diagnoses_icd
-  - name: cln_diagnoses_icd
+  # model: stg_diagnoses_icd
+  - name: stg_diagnoses_icd
     description: One row per diagnoses in an admission
     
     tests:
@@ -62,8 +62,8 @@ models:
         tests:
           - not_null
 
-  # model: cln_labevents
-  - name: cln_labevents
+  # model: stg_labevents
+  - name: stg_labevents
     description: One row per lab event
     columns:
       - name: labevent_id
@@ -84,8 +84,8 @@ models:
           - not_null
 
 
-  # model: cln_prescriptions
-  - name: cln_prescriptions
+  # model: stg_prescriptions
+  - name: stg_prescriptions
     description: One row per prescription
     columns:
       - name: hadm_id
@@ -97,8 +97,29 @@ models:
           - not_null
 
 
-  # model: cln_procedures_icd
-  - name: cln_procedures_icd
+  # model: stg_procedures_icd
+  - name: stg_procedures_icd
+    description: One row per procedure
+    tests:
+      - unique:
+          column_name: "(hadm_id || '-' || seq_num)"
+          
+    columns:
+      - name: hadm_id
+        tests:
+          - not_null
+
+      - name: seq_num
+        tests:
+          - not_null
+
+      - name: icd_code
+        tests:
+          - not_null
+
+
+  # model: stg_procedures_icd
+  - name: stg_procedures_icd
     description: One row per procedure
     tests:
       - unique:
