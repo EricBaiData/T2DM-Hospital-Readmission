@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  
+  # model: stg_admission
+  - name: stg_admission
+    description: One row per admission
+    columns:
+      - name: hadm_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+
+      - name: subject_id
+        tests:
+          - not_null
+
+
+  # model: stg_patients
+  - name: stg_patients
+    description: One row per patient
+    columns:
+      - name: subject_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+
+      - name: gender
+        tests:
+          - not_null
+
+      - name: anchor_age
+        tests:
+          - not_null
+
+
+  # model: cln_diagnoses_icd
+  - name: cln_diagnoses_icd
+    description: One row per diagnoses in an admission
+    
+    tests:
+      - unique:
+          column_name: "(hadm_id || '-' || seq_num)"
+    
+    columns:
+      - name: subject_id
+        description: Primary key
+        tests:
+          - not_null
+
+      - name: hadm_id
+        tests:
+          - not_null
+
+      - name: seq_num
+        tests:
+          - not_null
+
+      - name: icd_code
+        tests:
+          - not_null
+
+  # model: cln_labevents
+  - name: cln_labevents
+    description: One row per lab event
+    columns:
+      - name: labevent_id
+        tests:
+          - unique
+          - not_null
+
+      - name: subject_id
+        tests:
+          - not_null
+
+      - name: hadm_id
+        tests:
+          - not_null
+
+      - name: itemid
+        tests:
+          - not_null
+
+
+  # model: cln_prescriptions
+  - name: cln_prescriptions
+    description: One row per prescription
+    columns:
+      - name: hadm_id
+        tests:
+          - not_null
+
+      - name: ndc
+        tests:
+          - not_null
+
+
+  # model: cln_procedures_icd
+  - name: cln_procedures_icd
+    description: One row per procedure
+    tests:
+      - unique:
+          column_name: "(hadm_id || '-' || seq_num)"
+          
+    columns:
+      - name: hadm_id
+        tests:
+          - not_null
+
+      - name: seq_num
+        tests:
+          - not_null
+
+      - name: icd_code
+        tests:
+          - not_null
