@@ -5,3 +5,5 @@ FROM
     {{ ref('stg_procedures_icd') }}
 GROUP BY 
     hadm_id
+HAVING 
+    MAX(seq_num) > 0

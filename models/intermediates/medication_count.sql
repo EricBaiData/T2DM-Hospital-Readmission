@@ -5,3 +5,5 @@ FROM
     {{ ref('stg_prescriptions') }}
 GROUP BY 
     hadm_id
+HAVING
+    COUNT(DISTINCT(drug_code)) > 0
