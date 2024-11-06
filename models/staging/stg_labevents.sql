@@ -2,7 +2,9 @@ SELECT
     labevent_id,
     hadm_id,
     subject_id,
-    itemid
+    itemid,
+    valuenum AS test_value,
+    valueuom AS unit
 FROM 
     mimic-iv-440804.hosp_ehr.labevents
 WHERE
