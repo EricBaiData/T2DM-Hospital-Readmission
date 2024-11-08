@@ -17,6 +17,7 @@ WITH admissions AS (
         mimic-iv-440804.hosp_ehr.admissions
     WHERE 
         EXTRACT(HOUR FROM (dischtime - admittime)) >= 24
+        AND discharge_location != 'HOSPICE'
 ),
 
 survivor_id AS (
