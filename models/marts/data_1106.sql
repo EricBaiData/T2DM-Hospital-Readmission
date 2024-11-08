@@ -19,6 +19,12 @@ SELECT
 
     h.metformin,
 
+    i.diagnosis_1,
+    i.diagnosis_2,
+    i.diagnosis_3,
+    i.diagnosis_4,
+    i.diagnosis_5,
+
     a.readmit_30d
 FROM
     {{ ref('stg_admission') }} AS a
@@ -42,4 +48,7 @@ LEFT JOIN
         USING(hadm_id)
 LEFT JOIN
     {{ ref('metformin') }} AS h
+        USING(hadm_id)
+LEFT JOIN
+    {{ ref('top_diagnoses') }} AS i
         USING(hadm_id)
