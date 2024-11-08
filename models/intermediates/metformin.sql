@@ -9,7 +9,8 @@ WITH metformin AS (
 non_dupe_id AS (
     SELECT
         hadm_id
-    FROM metformin
+    FROM 
+        metformin
     GROUP BY
         hadm_id
     HAVING
