@@ -21,7 +21,7 @@ WITH admissions AS (
 
 survivor_id AS (
     SELECT 
-        hadm_id
+        subject_id
     FROM 
         admissions
     WHERE 
@@ -36,7 +36,7 @@ survivor AS (
         survivor_id
     LEFT JOIN
         admissions 
-            USING(hadm_id)
+            USING(subject_id)
 )
 
 SELECT
