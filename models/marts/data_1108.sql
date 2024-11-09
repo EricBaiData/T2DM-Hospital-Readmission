@@ -1,31 +1,48 @@
 SELECT
-    a.hadm_id,
-    a.race,
-    a.insurance,
-    a.admission_type,
-    a.los_hours,
-    a.discharge_location,
+    a.hadm_id
+    , a.race
+    , a.insurance
+    , a.admission_type
+    , a.los_hours
+    , a.discharge_location
 
-    b.gender,
-    b.anchor_age,
+    , b.gender
+    , b.anchor_age
 
-    c.diagnoses_count,
-    d.labtest_count,
-    e.medication_count,
-    f.procedure_count,
+    , c.diagnoses_count
+    , d.labtest_count
+    , e.medication_count
+    , f.procedure_count
 
-    g.max_a1c,
-    g.max_glucose,
+    ,g.max_a1c
+    , g.max_glucose
 
-    h.metformin,
+    , h.metformin
+    , h.repaglinide
+    , h.nateglinide
+    , h.chlorpropamide
+    , h.glimepiride
+    , h.acetohexamide
+    , h.glipizide
+    , h.glyburide
+    , h.tolbutamide
+    , h.pioglitazone
+    , h.rosiglitazone
+    , h.acarbose
+    , h.miglitol
+    , h.troglitazone
+    , h.tolazamide
+    , h.examide
+    , h.citoglipton
+    , h.insulin
 
-    i.diagnosis_1,
-    i.diagnosis_2,
-    i.diagnosis_3,
-    i.diagnosis_4,
-    i.diagnosis_5,
+    , i.diagnosis_1
+    , i.diagnosis_2
+    , i.diagnosis_3
+    , i.diagnosis_4
+    , i.diagnosis_5
 
-    a.readmit_30d
+    , a.readmit_30d
 FROM
     {{ ref('stg_admission') }} AS a
 INNER JOIN
@@ -47,7 +64,7 @@ LEFT JOIN
     {{ ref('labevents_results') }} AS g
         USING(hadm_id)
 LEFT JOIN
-    {{ ref('metformin') }} AS h
+    {{ ref('prescriptions') }} AS h
         USING(hadm_id)
 LEFT JOIN
     {{ ref('top_diagnoses') }} AS i

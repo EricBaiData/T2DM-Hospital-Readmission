@@ -118,15 +118,3 @@ models:
           - not_null
 
 
-  # model: metformin
-  - name: metformin
-    description: One row per admission
-    columns:
-      - name: hadm_id
-        tests:
-          - not_null
-          - unique
-
-      - name: metformin
-        tests:
-          - not_null
