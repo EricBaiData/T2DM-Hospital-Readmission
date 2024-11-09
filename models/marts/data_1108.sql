@@ -8,14 +8,15 @@ SELECT
     , a.discharge_location
 
     , b.gender
-    , b.anchor_age
+
+    , j.age
 
     , c.diagnoses_count
     , d.labtest_count
     , e.medication_count
     , f.procedure_count
 
-    ,g.max_a1c
+    , g.max_a1c
     , g.max_glucose
 
     , h.metformin
@@ -69,4 +70,7 @@ LEFT JOIN
         USING(hadm_id)
 LEFT JOIN
     {{ ref('top_diagnoses') }} AS i
+        USING(hadm_id)
+LEFT JOIN
+    {{ ref('admission_age') }} AS j
         USING(hadm_id)
