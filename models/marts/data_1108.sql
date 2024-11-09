@@ -4,6 +4,7 @@ SELECT
     , a.insurance
     , a.admission_type
     , a.los_hours
+    , a.admission_location
     , a.discharge_location
 
     , b.gender
