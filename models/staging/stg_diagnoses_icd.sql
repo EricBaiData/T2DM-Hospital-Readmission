@@ -20,7 +20,7 @@ unique_table AS (
         mimic-iv-440804.hosp_ehr.diagnoses_icd AS diagnoses_icd 
             USING(hadm_id, seq_num)
     WHERE
-        seq_num <= 5
+        seq_num <= 3
 ),
 
 id AS (
