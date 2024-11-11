@@ -1,5 +1,6 @@
 SELECT
     a.hadm_id
+    , a.subject_id
     , a.race
     , a.insurance
     , a.admission_type
@@ -37,6 +38,7 @@ SELECT
     , h.examide
     , h.citoglipton
     , h.insulin
+    , diabetic_med
 
     , i.diagnosis_1
     , i.diagnosis_2
